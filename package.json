@@ -1,7 +1,6 @@
 {
   "name": "test-react-native-app",
   "version": "0.1.0",
-  "private": true,
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest-expo": "23.0.0",
