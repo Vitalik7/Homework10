@@ -1,22 +1,28 @@
+import styles from '../styles/styles'
 import React, { Component } from 'react'
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-  Image
+  Image,
 } from 'react-native'
+
 import ImagePicker from 'react-native-image-picker'
 import RNFS from 'react-native-fs'
+import DatePicker from 'react-native-datepicker'
 
 export default class Main extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      avatarSource: {}
+      avatarSource: {},
+      date: "2017-12-30"
     }
     this.selectImage = this.selectImage.bind(this)
   }
+
+
   selectImage () {
     let options = {
       title: 'Select Avatar',
@@ -24,7 +30,8 @@ export default class Main extends Component {
         skipBackup: true,
         path: 'images'
       }
-    };
+    }
+
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response)
 
@@ -54,48 +61,47 @@ export default class Main extends Component {
       }
     })
   }
+
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
+      <View style={styles.container1}>
+        <DatePicker
+        style={styles.date}
+         date={this.state.date}
+         mode="date"
+         placeholder="select date"
+         format="YYYY-MM-DD"
+         minDate="2015-01-01"
+         maxDate="2021-01-01"
+         confirmBtnText="Confirm"
+         cancelBtnText="Cancel"
+         customStyles={{
+           dateIcon: {
+             position: 'absolute',
+             left: 0,
+             top: 4,
+             marginLeft: 0
+           },
+           dateInput: {
+             marginLeft: 36
+           }
+         }}
+         onDateChange={(date) => {this.setState({date: date})}}
+        />
+
         <TouchableOpacity
           style={styles.photoButton}
           onPress={this.selectImage}>
           <Text style={styles.photoButtonText}>
-            Upload image
+            Take photo
           </Text>
         </TouchableOpacity>
         <View>
           <Image source={this.state.avatarSource} style={styles.uploadAvatar} />
         </View>
+
       </View>
+
     )
   }
 }
-
-let styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center'
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  photoButton: {
-    flex: 0,
-    padding: 20,
-    marginBottom: 10,
-    backgroundColor: 'grey',
-    justifyContent: 'center'
-  },
-  photoButtonText: {
-    color: 'blue',
-    textAlign: 'center'
-  },
-  uploadAvatar: {
-    width: 400,
-    height: 400,
-    backgroundColor: 'grey'
-  }
-})

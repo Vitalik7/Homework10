@@ -17,10 +17,22 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@remobile/react-native-image-picker": "^1.0.6",
     "babel-preset-react-native": "^2.1.0",
+    "create-react-native-app": "^1.0.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-camera": "^0.12.0",
+    "react-native-checkbox": "^2.0.0",
+    "react-native-cli": "^2.0.1",
+    "react-native-datepicker": "^1.6.0",
+    "react-native-elements": "^0.18.5",
+    "react-native-form": "^2.1.2",
     "react-native-fs": "^2.9.2",
-    "react-native-image-picker": "^0.26.7"
+    "react-native-image-crop-picker": "^0.19.1",
+    "react-native-image-picker": "^0.26.7",
+    "react-native-imagepicker": "^2.0.0",
+    "react-native-text-input": "^1.1.0",
+    "tcomb-form-native": "^0.6.11"
   }
 }

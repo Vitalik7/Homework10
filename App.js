@@ -1,22 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Main from './app/components/Main'
+import styles from './app/styles/styles'
+import ToDoListContainer from './app/components/Container'
+import React from 'react'
+import {
+  NavigatorIOS
+} from 'react-native'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Main />
-      </View>
-    );
-  }
+class ToDoApp extends React.Component {
+    render() {
+        return (
+            <NavigatorIOS
+                style={styles.navigator}
+                initialRoute={{component: ToDoListContainer, title: 'TO DOs'}}
+            />
+        )
+    }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default ToDoApp
